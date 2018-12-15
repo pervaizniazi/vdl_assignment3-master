@@ -1,0 +1,28 @@
+1.1 Theory Problems
+
+1. How a fully connected layer can be realized as a convolution layer?
+
+Ans: Semantic Segmentation process has Convolution and pooling layers as normal CNNs. However, at the end of CNN, instead of having fully connected layers, output of CNN is upsampled so that output matches the size of original input image. For upsampling there are many technqiues used such as "Nearest Neighbors", "Bed of Nails", "Strided Convolution". Hence fully connect layer is replaced with some decode.
+
+2.  What is the importance of skip connections in a CNN for image segmentation and object detection
+problems?
+
+Ans: In CNN, each layer computes different set of features from the input images. For example, earlier layers extract edges/lines while deeper layers extract more abstract shapes such as eyes, nose etc. As we go deeper in the CNNs, spatial information is lost due to pooling. Skip connections help passing output of ealier layers as input to deeper layers (along with deeper layers original input) to somehow compensate the spatial loss. Results show that skip connections result in improved performance of for image segmentation and object detection.
+
+3. Ground truth labels for image classification problem are class names which are converted to one
+hot vectors and cross-entropy loss is applied over CNN to train them in supervised manner.  What
+are the ground truth labels in semantic segmentation problem, and by what loss function are they
+trained over a CNN?
+
+Ans: For segmentation problem, class of every pixel in the image is a ground truth label. i.e. Every pixel is assigned the class. For example, if there is a cat in the grassy ground, every pixel will be lablled whether it belongs to grass or cat. As far as loss is concerned, cross-entropy loss is used for every pixel in the training set images.
+
+4. How transposed convolution helps in upsampling an image, in case of semantic segmentation ?
+
+Ans: In trasposed convolution, filter is learned instead of hard coding. What transpose convolution does is: First pixel in the input is multiplied with each value in the learned filter and result of multiplication is copied in output matrix (in contrast to convoultion where multiplication result is summed and then copied). Then second pixel of input is multiplied with each value in the filter and copied in the output matrix. Please note that multiplication result is added if value already exists in location from previous mutliplication (Otherwise value is just copied).This process is for every pixel in the input. 
+
+5. Why accuracy is not a good measure in case of semantic segmentation ?  What measure is used to
+evaluate results in semantic segmentation ?
+
+Ans: Semantic segmentation predicts class for every pixel in the image, although accuracy can be used to measure the performance of the model, it would be more helpful if we know how much predicted output matches the ground truth. Intersection Over Union (IOU) measures how much predicted output overlaps the ground truth. In literature, IOU is used as performance metrics for  semantic segmentation  
+  
+ 
