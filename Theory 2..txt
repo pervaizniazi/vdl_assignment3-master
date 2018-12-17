@@ -1,0 +1,13 @@
+
+1. What is a receptive field of a convolution filter?
+
+Ans : Receptive field of the convlution filter is the region in the input image on which convolution filter is currently operating. For exapmle, input image size is 7x7 and filter size is 3x3. In this case, receptive field of convolution filter is 3x3 = 9 locations in the input image. If we have filter of size 5x5, its receptive field will be 5x5 = 25 (25 locations in the input image).
+
+2. How can a receptive field of a filter of a particular layer be obtained in theory ?
+
+Ans: If we have input image of size 300x300x3 and the size of the filter is 7x7x3, then we have 5x5x3 = 147 connections to the input volume.
+
+3. How can a receptive field of a filter can be obtained in practice ?
+
+Ans : Suppose we have 300x300 iamge and filter size is 7x7, so receptive field of the filter will be 7x7 area in the input volume (for simplity we are omitting channel value). However, stack of three 3x3 filter with stride 1 has same receptive as one 7x7 filter size but requires fewer parameters. Therefore, in practice, smaller filters are preferred.
+
